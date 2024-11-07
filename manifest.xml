@@ -12,12 +12,11 @@
     <dependencies>
         <!-- Other plugins this plugin depends on -->
     </dependencies>
-    <requirements>
+    <permissions>
         <!-- Other requirements this plugin depends on -->
-        <!-- <migrations /> -->
-        <!-- <permissions /> -->
-        <!-- <api /> -->
-        <!-- <backend />-->
-        <!-- <frontend />-->
-    </requirements>
+        <!-- <client /> -->
+        <!-- <migration /> -->
+        <!-- <routes /> -->
+        <!-- <public /> -->
+    </permissions>
 </info>
