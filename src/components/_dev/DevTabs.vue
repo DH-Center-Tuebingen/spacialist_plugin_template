@@ -19,11 +19,17 @@
                 class="nav-link"
                 :class="pillClass(tab)"
                 aria-current="page"
-                href="#"  
-                @click.prevent="()=> store.setActiveTab(tab.label)"
+                href="#"
+                @click.prevent="() => store.setActiveTab(tab)"
             >{{ tab.label }}</a>
         </li>
     </ul>
+    <component
+        :is="store.activeTab.component"
+        v-if="store.activeTab"
+        v-bind="store.activeTab.props"
+        class="p-3"
+    />
 </template>
 
 <script>
@@ -38,7 +44,7 @@
             const pillClass = computed(() => {
                 return (tab) => {
                     return {
-                        'active': tab.label === store.activeTab,
+                        'active': tab.label === store.activeTab.label,
                     };
                 };
             });

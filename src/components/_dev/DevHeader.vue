@@ -1,10 +1,12 @@
 <template>
     <nav class="navbar navbar-expand-lg border-bottom">
         <div class="container-fluid">
-            <a
+            <RouterLink
                 class="navbar-brand"
-                href="#"
-            >Plugin Development</a>
+                to="/"
+            >
+                Plugin Development
+            </RouterLink>
             <div class="collapse navbar-collapse">
                 <div>
                     <ul class="navbar-nav">
@@ -23,10 +25,13 @@
                                     v-for="tool in store.tools"
                                     :key="tool.label"
                                 >
-                                    <a
+                                    <router-link
                                         class="dropdown-item"
+                                        :to="`/${tool.of}/${tool.href}`"
                                         href="#"
-                                    >{{ tool.label }}</a>
+                                    >
+                                        {{ tool.label }}
+                                    </router-link>
                                 </li>
                             </ul>
                         </li>
@@ -43,12 +48,15 @@
                             <ul class="dropdown-menu">
                                 <li
                                     v-for="setting in store.settings"
-                                    :key="setting.label"
+                                    :key="setting.key"
                                 >
-                                    <a
+                                    <router-link
                                         class="dropdown-item"
+                                        :to="`/${setting.of}/${setting.href}`"
                                         href="#"
-                                    >{{ setting.label }}</a>
+                                    >
+                                        {{ setting.label }}
+                                    </router-link>
                                 </li>
                             </ul>
                         </li>
@@ -60,6 +68,7 @@
 </template>
 
 <script>
+    import { RouterLink } from 'vue-router';
     import { useAppStore } from '../../js/_dev/store';
 
     export default {

@@ -11,6 +11,13 @@ import { createPluginPolyfill } from './plugin-polyfill';
 import { createPinia } from 'pinia';
 import router from './router';
 
+
+setTimeout(() => {
+    import('../../main.js').then((module) => {
+        console.log('SpPS Plugin loaded successfully!');
+    }, 1000);
+});
+
 createPluginPolyfill();
 const app = createApp(App);
 
