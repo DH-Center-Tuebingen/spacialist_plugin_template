@@ -9,6 +9,10 @@
     <authors>
         <author>Severin Opel</author>
     </authors>
+    <compatibility>
+        <spacialist></spacialist>
+        <php></php>
+    </compatibility>
     <dependencies>
         <!-- Other plugins this plugin depends on -->
     </dependencies>

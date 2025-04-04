@@ -1,25 +1,15 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue';
+    import { RouterView } from 'vue-router';
+    import DevHeader from './components/_dev/DevHeader.vue';
 </script>
 
 <template>
-  <div />
-  <HelloWorld msg="Vite + Vue" />
+    <div
+        class="d-flex flex-column h-100"
+    >
+        <DevHeader />
+        <div class="flex-fill">
+            <RouterView />
+        </div>
+    </div>
 </template>
-
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
-</style>
