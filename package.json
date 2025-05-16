@@ -1,5 +1,7 @@
 {
     "name": "spacialist_plugin_template",
+    "plugin_name": "Template",
+    "description": "A template for creating Spacialist plugins.",
     "private": true,
     "type": "module",
     "scripts": {
@@ -11,11 +13,15 @@
     "devDependencies": {
         "@vitejs/plugin-vue": "^4.5.2",
         "bootstrap": "^5.3.4",
+        "dotenv": "^16.5.0",
         "fast-xml-parser": "^4.4.0",
         "pinia": "^3.0.1",
         "vite": "^5.0.8",
         "vue": "^3.5.13",
         "vue-router": "^4.5.0"
     },
-    "version": "1.0.0"
+    "version": "1.0.0",
+    "dependencies": {
+        "pg-promise": "^11.13.0"
+    }
 }
