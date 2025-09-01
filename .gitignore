@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Spacialist Plugin
+### Legacy location of the info.xml
+App/info.xml
+js/*

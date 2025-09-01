@@ -22,5 +22,15 @@
         <!-- <migration /> -->
         <!-- <routes /> -->
         <!-- <public /> -->
+        <attributes />
+        <components />
     </permissions>
+    <attributes>
+        <!-- Attribute names must start with their plugin name -->
+        <attribute type="attribute" src="Attributes\TemplateAttribute" />
+    </attributes>
+    <components>
+        <!-- Attribute names must start with their plugin name -->
+        <component name="TemplateAttribute" src="src/components/Attribute.vue" />
+    </components>
 </info>

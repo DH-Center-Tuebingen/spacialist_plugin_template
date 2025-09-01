@@ -3,14 +3,21 @@
  * your plugin. Just delete this and start from scratch.
  */
 
-import { title } from 'process';
 import Example from './components/Example.vue';
+import Attribute from './components/Attribute.vue';
+
+import * as en from './i18n/en.json';
+import * as de from './i18n/de.json';
 
 const id = 'template';
 const of = id;
 
 SpPS.register({
-    id
+    id,
+    i18n: {
+        en: { [id]: en.default },
+        de: { [id]: de.default },
+    }
 });
 
 SpPS.intoSlot({
@@ -28,7 +35,7 @@ SpPS.intoSlot({
 
 SpPS.intoSlot({
     of,
-    key: 'template',
+    key: 'template-two',
     slot: 'tab',
     icon: 'fa-folder',
     label: 'template-2',
@@ -76,3 +83,12 @@ SpPS.registerRoutes(id, [{
         title: 'Template Settings',
     },
 }]);
+
+
+SpPS.registerComponent({
+    of,
+    type: 'attribute',
+    key: id,
+    datatype: 'template_attribute',
+    component: Attribute,
+});

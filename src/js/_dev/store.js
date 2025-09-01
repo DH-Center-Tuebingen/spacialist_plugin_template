@@ -3,6 +3,7 @@ import { defineStore } from 'pinia';
 export const useAppStore = defineStore('appStore', {
     state: () => ({
         activeTab: null,
+        components: [],
         tabs: [],
         settings: [],
         tools: [],
@@ -17,6 +18,9 @@ export const useAppStore = defineStore('appStore', {
                 this.activeTab = tab;
             }
             this.tabs.push(tab);
+        },
+        registerComponent(obj) {
+            this.components.push(obj);
         }
     },
 });

@@ -1,12 +1,37 @@
+import DevComponentPreview from '../../components/_dev/DevComponentPreview.vue';
 import router from './router';
 import { useAppStore } from './store';
 /** 
  * Polyfill for the SpPS plugin system.
  */
 export function createPluginPolyfill() {
+    
+    let componentRouteAdded = false;
+    let componentRoute = {
+        path: `/component`,
+        name: 'component',
+        component: DevComponentPreview,
+        children: []
+    };
+
     window.SpPS = {
         register: ({ id, i18n, routes, store }) => { },
         registerI18n: (id, i18n) => { },
+        registerComponent: (componentDefinition) => {
+            const store = useAppStore();
+            store.registerComponent(componentDefinition);
+
+            if(!componentRouteAdded){
+                router.addRoute(componentRoute);
+                componentRouteAdded = true;
+            }
+
+            const path = componentDefinition.componentTag ?? componentDefinition.key;
+            router.addRoute('component', {
+                path: `${path}`,
+                component: componentDefinition.component
+            });
+        },
         registerRoutes: (id, routes) => {
             const pluginRoute = {
                 path: `/${id}`,
@@ -18,7 +43,7 @@ export function createPluginPolyfill() {
                 }
             };
             routes.forEach(route => {
-                if(!route.component){
+                if(!route.component) {
                     console.error(`Route ${route.path} does not have a component.`);
                     return;
                 }
@@ -47,7 +72,7 @@ export function createPluginPolyfill() {
         }) => {
             const store = useAppStore();
 
-            if (slot == 'tab') {
+            if(slot == 'tab') {
                 const tab = {
                     id: key,
                     of: of,
@@ -59,7 +84,7 @@ export function createPluginPolyfill() {
                     props: props,
                 };
                 store.addTab(tab);
-            } else if (slot == 'tools' || slot == 'settings') {
+            } else if(slot == 'tools' || slot == 'settings') {
                 const item = {
                     id: key,
                     of: of,

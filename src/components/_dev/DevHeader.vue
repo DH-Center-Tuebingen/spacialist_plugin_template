@@ -60,6 +60,31 @@
                                 </li>
                             </ul>
                         </li>
+                        <li class="nav-item dropdown">
+                            <a
+                                class="nav-link dropdown-toggle"
+                                href="#"
+                                role="button"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                            >
+                                Components ({{ store.components.length }})
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li
+                                    v-for="component in store.components"
+                                    :key="component.componentTag ?? component.key"
+                                >
+                                    <router-link
+                                        class="dropdown-item"
+                                        :to="`/component/${component.componentTag ?? component.key}`"
+                                        href="#"
+                                    >
+                                        {{ component.componentTag ?? component.key }}
+                                    </router-link>
+                                </li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -83,4 +108,7 @@
     };
 </script>
 
-<style lang='scss' scoped></style>
+<style
+    lang='scss'
+    scoped
+></style>
