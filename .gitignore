@@ -27,3 +27,4 @@ dist-ssr
 ### Legacy location of the info.xml
 App/info.xml
 js/*
+build/*

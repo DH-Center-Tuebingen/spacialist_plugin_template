@@ -1,6 +1,6 @@
 {
     "name": "spacialist_plugin_template",
-    "plugin_name": "Template",
+    "pluginName": "Template",
     "description": "A template for creating Spacialist plugins.",
     "private": true,
     "type": "module",
