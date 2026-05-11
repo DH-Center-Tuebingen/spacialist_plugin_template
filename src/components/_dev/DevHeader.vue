@@ -1,5 +1,5 @@
 <template>
-    <nav class="navbar navbar-expand-lg border-bottom">
+    <nav class="navbar navbar-expand-lg border-bottom d-flex">
         <div class="container-fluid">
             <RouterLink
                 class="navbar-brand"
@@ -7,84 +7,24 @@
             >
                 Plugin Development
             </RouterLink>
-            <div class="collapse navbar-collapse">
+            <div class="collapse navbar-collapse justify-content-end">
                 <div>
-                    <ul class="navbar-nav">
-                        <li class="nav-item dropdown">
-                            <a
-                                class="nav-link dropdown-toggle"
-                                href="#"
-                                role="button"
-                                data-bs-toggle="dropdown"
-                                aria-expanded="false"
+                    <ul class="navbar-nav d-flex gap-3">
+                        <li>
+                            <RouterLink
+                                class="nav-link"
+                                to="/"
                             >
-                                Tools ({{ store.tools.length }})
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li
-                                    v-for="tool in store.tools"
-                                    :key="tool.label"
-                                >
-                                    <router-link
-                                        class="dropdown-item"
-                                        :to="`/${tool.of}/${tool.href}`"
-                                        href="#"
-                                    >
-                                        {{ tool.label }}
-                                    </router-link>
-                                </li>
-                            </ul>
+                                Tabs
+                            </RouterLink>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a
-                                class="nav-link dropdown-toggle"
-                                href="#"
-                                role="button"
-                                data-bs-toggle="dropdown"
-                                aria-expanded="false"
-                            >
-                                Settings ({{ store.settings.length }})
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li
-                                    v-for="setting in store.settings"
-                                    :key="setting.key"
-                                >
-                                    <router-link
-                                        class="dropdown-item"
-                                        :to="`/${setting.of}/${setting.href}`"
-                                        href="#"
-                                    >
-                                        {{ setting.label }}
-                                    </router-link>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a
-                                class="nav-link dropdown-toggle"
-                                href="#"
-                                role="button"
-                                data-bs-toggle="dropdown"
-                                aria-expanded="false"
-                            >
-                                Components ({{ store.components.length }})
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li
-                                    v-for="component in store.components"
-                                    :key="component.componentTag ?? component.key"
-                                >
-                                    <router-link
-                                        class="dropdown-item"
-                                        :to="`/component/${component.componentTag ?? component.key}`"
-                                        href="#"
-                                    >
-                                        {{ component.componentTag ?? component.key }}
-                                    </router-link>
-                                </li>
-                            </ul>
-                        </li>
+                        <DevHeaderItem
+                            v-for="item in items"
+                            :key="item.title"
+                            :title="item.title"
+                            :items="item.items"
+                            :to="item.to"
+                        />
                     </ul>
                 </div>
             </div>
@@ -95,14 +35,34 @@
 <script>
     import { RouterLink } from 'vue-router';
     import { useAppStore } from '../../js/_dev/store';
+    import DevHeaderItem from './DevHeaderItem.vue';
 
     export default {
+        components: {
+            DevHeaderItem
+        },
         setup() {
 
             const store = useAppStore();
 
+            const items = [
+                {
+                    title: 'Tools',
+                    items: store.tools
+                },
+                {
+                    title: 'Settings',
+                    items: store.settings
+                },
+                {
+                    title: 'Components',
+                    items: store.components
+                }
+            ];
+
             return {
-                store
+                store,
+                items
             };
         }
     };
@@ -111,4 +71,11 @@
 <style
     lang='scss'
     scoped
-></style>
+>
+
+.navbar{
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+</style>
