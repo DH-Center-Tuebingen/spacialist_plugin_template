@@ -24,12 +24,34 @@ export default defineConfig({
         'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'production'),
         'process.env': {}
     },
+    server: {
+        // Serve assets directory only in dev server
+        publicDir: 'public',
+        // middlewareMode: false,
+        // setupMiddlewares: (middlewares, devServer) => {
+        //     middlewares.use((req, res, next) => {
+        //         console.log(`Received request for ${req.url}`);
+        //         if (req.url.startsWith('/assets/')) {
+        //             const fs = require('fs');
+        //             const path = require('path');
+        //             const assetPath = path.join(devServer.config.root, req.url);
+        //             if (!fs.existsSync(assetPath)) {
+        //                 res.statusCode = 404;
+        //                 res.end('404 Not Found');
+        //                 return;
+        //             }
+        //         }
+        //         next();
+        //     });
+        //     return middlewares;
+        // },
+    },
     build: {
         sourcemap: true,
         lib: {
             // We run the 'playground' when using the vite dev server
             // otherwise we build directly using the main.js
-            entry: isDev ? 'src/js/_dev/app.js' : 'src/main.js',
+            entry: isDev ? 'playground/js/app.js' : 'src/main.js',
             name: pluginName,
             fileName: (format) => `${pluginName.toLowerCase()}.${format}.js`
         },

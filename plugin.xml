@@ -14,7 +14,7 @@
         <php></php>
     </compatibility>
     <css>
-        <file src="src/exported.css" name="default" />
+        <file src="src/exported.css" />
     </css>
     <dependencies>
         <!-- Other plugins this plugin depends on -->
