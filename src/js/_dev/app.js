@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'; // Import Bootstrap JS
 
 import '../../main.css';
+import '../../exported.css';
 
 import { createApp } from 'vue';
 import { createPluginPolyfill } from './plugin-polyfill';

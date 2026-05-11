@@ -1,6 +1,6 @@
 <template>
-    <div class="d-flex align-items-center gap-2">
-        <span style="color: red !important; font-weight: bold;">[TEMPLATE]</span>
+    <div class="template-attribute d-flex align-items-center gap-2">
+        <span class="saturn">🪐</span>
         <input
             v-model="v.value"
             class="form-control"

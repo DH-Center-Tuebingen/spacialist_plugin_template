@@ -7,7 +7,7 @@ import { readFileSync } from 'fs';
 let pluginName;
 
 const xmlParser = new XMLParser();
-const manifestText = readFileSync('manifest.xml', 'utf8');
+const manifestText = readFileSync('plugin.xml', 'utf8');
 const manifest = xmlParser.parse(manifestText);
 pluginName = manifest?.info?.name;
 

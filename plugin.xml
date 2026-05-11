@@ -13,21 +13,15 @@
         <spacialist></spacialist>
         <php></php>
     </compatibility>
+    <css>
+        <file src="src/exported.css" name="default" />
+    </css>
     <dependencies>
         <!-- Other plugins this plugin depends on -->
     </dependencies>
-    <permissions>
-        <!-- Other requirements this plugin depends on -->
-        <!-- <client /> -->
-        <!-- <migration /> -->
-        <!-- <routes /> -->
-        <!-- <public /> -->
-        <attributes />
-        <components />
-    </permissions>
     <attributes>
         <!-- Attribute names must start with their plugin name -->
-        <attribute type="attribute" src="Attributes\TemplateAttribute" />
+        <attribute type="attribute" src="Attributes\TemplateAttribute" />        
     </attributes>
     <components>
         <!-- Attribute names must start with their plugin name -->
